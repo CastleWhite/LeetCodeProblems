@@ -22,3 +22,4 @@ class Solution:
             a.next = l[-1-i]
             a = a.next.next
         l[-1-((len(l)-1) // 2)].next = None
+ ## 中点、反转、合并
