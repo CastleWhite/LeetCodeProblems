@@ -3,11 +3,14 @@ class Solution:
         reco = [[] for _ in range(26)]
         l = len(S)
         for i in range(l):
-            # reco[ord(i)-ord('a')] += 1
+            # 只需记录last即可，不用数组【-1】
+            # for i, ch in enumerate(S):
+            #   last[ord(ch) - ord("a")] = i
             reco[ord(S[i])-ord('a')].append(i)
-        # print(reco)
+
         a = 0
         ans = []
+        # 可以改用for 遍历
         while a < l:
             last = reco[ord(S[a])-ord('a')][-1]
             begin = a
