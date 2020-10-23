@@ -25,5 +25,7 @@ class Solution:
                 return False
 
         return True
+    
+    # 修改列表，反转后半，比较，O(1)
             
                 
