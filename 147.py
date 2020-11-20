@@ -15,16 +15,19 @@ class Solution:
                 tail.next = red.next
                 red.next = head
                 head = red
+            elif tail.val < red.val:
+                tail = red
+
             else:
                 find = head
                 while find.next.val < red.val:
                     find = find.next
-                if find == tail:
-                    tail = red
-                else:
-                    tail.next = red.next
-                    red.next = find.next
-                    find.next = red
+                # if find == tail:
+                #     tail = red        提前判断
+
+                tail.next = red.next
+                red.next = find.next
+                find.next = red
 
             #insertion finished
             red = tail.next
