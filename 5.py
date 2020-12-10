@@ -2,6 +2,8 @@ class Solution:
     def longestPalindrome(self, s: str) -> str:
         if not s:
             return ""
+        if len(s)==1 or s==s[::-1]:
+            return s
 
         def isPalindrome(l, r):  # return bool 
             if l<0:
@@ -46,4 +48,23 @@ class Solution:
                                 break
                     
         return reco[1]
+        # 没必要记录这么多，只管长度即可
+
+    # def longestPalindrome(self, s: str) -> str:
+    #     if not s: return ""
+    #     length = len(s)
+    #     if length == 1 or s == s[::-1]: return s
+    #     max_len,start = 1,0
+    #     for i in range(1, length):
+    #         add_1 = s[i-max_len:i+1]
+    #         add_2 = s[i-max_len-1:i+1]
+    #         if i - max_len - 1 >= 0 and add_2 == add_2[::-1]:
+    #             start = i - max_len - 1
+    #             max_len += 2
+    #             continue
+    #         if i - max_len >= 0 and add_1 == add_1[::-1]:
+    #             start = i - max_len
+    #             max_len += 1
+    #             continue
+    #     return s[start:start + max_len]
 
