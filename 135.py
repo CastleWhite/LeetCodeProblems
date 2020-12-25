@@ -81,5 +81,7 @@ class Solution:
         for i in ans:
             anss += (1+i)*i//2
         return anss
+# 1 正向、逆向 遍历即可
+# 2 记录当前递减序列的长度 \textit{dec}dec，最近的递增序列的长度 \textit{inc}inc 和前一个同学分得的糖果数量 \textit{pre}pre 即可
 
 
