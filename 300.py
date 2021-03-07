@@ -14,18 +14,18 @@ class Solution:
             else:
                 a = 0
                 b = maxl
-                loc = 0
+
                 while a <= b:
-                    mid = (a+b)//2
+                    mid = (a+b)>>1
                     if reco[mid] < nums[i]:
-                        loc = mid + 1
+                        
                         a = mid + 1
                     elif reco[mid] == nums[i]:
-                        loc = mid
+                        a = mid
                         break
                     else:
                         b = mid - 1
-                reco[loc] = nums[i]
+                reco[a] = nums[i]
         
         return maxl + 1
 
