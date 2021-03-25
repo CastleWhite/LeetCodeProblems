@@ -7,7 +7,6 @@ class Solution:
             a = nums[i]
             if a == nums[i-1]: continue
 
-            new_stacks = []
             ls = len(stacks)
             left = 0
             right = ls - 1
@@ -20,7 +19,6 @@ class Solution:
                         stacks[-1].append(a)
                     else:
                         stacks[-1] = [a]
-                    new_stacks = stacks
                     break
                 
                 elif len(stack) > 1:
@@ -31,18 +29,21 @@ class Solution:
                     elif a < stack[0]:
                         left = j + 1
                     else: 
-                        new_stacks = stacks[0:j]
-                        new_stacks.append( [stacks[-1][0], stack[-1]] )
+                        tmp = [stacks[-1][0], stack[-1]]
+                        for _ in range(ls-j):
+                            stacks.pop()
+                        stacks.append( tmp )
                         break
             if right < 0:
-                new_stacks = [[stacks[-1][0], a]]
+                stacks = [[stacks[-1][0], a]]
             elif left >= ls:
                 stacks.append( [a] )
-                new_stacks = stacks
+                
             elif right < left:
-                new_stacks = stacks[0:left]
-                new_stacks.append( [stacks[-1][0], a] )
+                tmp = [stacks[-1][0], a]
+                for _ in range(ls-left):
+                    stacks.pop()
+                stacks.append( tmp )
 
-            stacks = new_stacks
             # 更好方法： 逆序。
         return False
